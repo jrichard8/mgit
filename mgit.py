@@ -20,7 +20,7 @@ args = sys.argv
 def list_branch():
     for directory in os.listdir("."):
         if osp.isdir(directory):
-            os.chdir(dir)
+            os.chdir(directory)
             lchild_dir = os.getcwd()
             if is_git_repo(lchild_dir):
                 print("#################")

@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 import os
 import os.path as osp
 import sys
@@ -12,10 +14,6 @@ def is_git_repo(path):
         return True
     except git.exc.InvalidGitRepositoryError:
         return False
-
-
-args = sys.argv
-
 
 def list_branch():
     for directory in os.listdir("."):
@@ -64,17 +62,24 @@ def switch_projects_to_branch():
                             repo.git.checkout(args[2])
                 os.chdir("..")
 
+def mgit():
 
-if args[1] == "--help" or args[1] == "-h":
-    print("--list-branch or -l : list all branches for all projects")
-    print("--list-project-for-branch or -p : list all projects for a given branch")
-    print("--switch-all or -s : switch all project on a given local branch, no branch creation")
+    args = sys.argv                
 
-elif args[1] == "--list-branch" or args[1] == "-l":
-    list_branch()
+    if args[1] == "--help" or args[1] == "-h":
+        print("--list-branch or -l : list all branches for all projects")
+        print("--list-project-for-branch or -p : list all projects for a given branch")
+        print("--switch-all or -s : switch all project on a given local branch, no branch creation")
 
-elif args[1] == "--list-project-for-branch" or args[1] == "-p":
-    list_project_for_branch()
+    elif args[1] == "--list-branch" or args[1] == "-l":
+        list_branch()
 
-elif args[1] == "--switch-all" or args[1] == "-s":
-    switch_projects_to_branch()
+    elif args[1] == "--list-project-for-branch" or args[1] == "-p":
+        list_project_for_branch()
+
+    elif args[1] == "--switch-all" or args[1] == "-s":
+        switch_projects_to_branch()
+
+    
+if __name__ == '__main__':
+    mgit()

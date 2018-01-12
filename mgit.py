@@ -7,6 +7,8 @@ import sys
 import git
 from git import Repo
 
+// TODO : Better manage script params
+args = sys.argv
 
 def is_git_repo(path):
     try:
@@ -63,8 +65,6 @@ def switch_projects_to_branch():
                 os.chdir("..")
 
 def mgit():
-
-    args = sys.argv                
 
     if args[1] == "--help" or args[1] == "-h":
         print("--list-branch or -l : list all branches for all projects")

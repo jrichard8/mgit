@@ -22,7 +22,7 @@
     --list-branch or -l : list all branches for all projects
     --list-project-for-branch or -p : list all projects for a given branch
     --list-remote-branch or -r : list all remote branches for all projects
-    --switch-all or -s : switch all project on a given branch (locally first, in remote otherwise), no branch creation
+    --switch-all or -s : switch all projects on a given branch (locally first, in remote otherwise), no branch creation
     python mgit.py --list-branch     
     python mgit.py --list-project-for-branch feature/TH-0000     
     python mgit.py --switch-all feature/TH-0000     

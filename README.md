@@ -10,7 +10,7 @@
     * Git 1.7.0 or newer
         It should also work with older versions, but it may be that some operations involving remotes will not work as expected.
     
-    * sudo apt install pip
+    * $ sudo apt-get install python-pip python-dev build-essential 
     
     * sudo pip install gitpython
     

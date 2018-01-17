@@ -12,7 +12,9 @@
     
     * sudo apt install pip
     
-    * pip install gitpython
+    * sudo pip install gitpython
+    
+    * sudo pip install colorama
         
     * copy/paste mgit.py in the root directory that contains your git projects
     

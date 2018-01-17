@@ -119,7 +119,8 @@ def mgit():
         print("--list-remote-branch or -r : list all remote branches for all projects")
         print("--list-project-for-branch or -p : list all projects for a given branch")
         print(
-            "--switch-all or -s : switch all project on a given branch (local first, remote else), no branch creation")
+            "--switch-all or -s : switch all project on a given branch (locally first, in remote otherwise), "
+            "no branch creation")
 
     elif args[1] == "--list-branch" or args[1] == "-l":
         list_branch()

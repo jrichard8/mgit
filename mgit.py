@@ -9,7 +9,7 @@ from git import Repo
 
 init()
 
-// TODO : Better manage script params
+# TODO : Better manage script params
 args = sys.argv
 
 
@@ -19,6 +19,7 @@ def is_git_repo(path):
         return True
     except git.exc.InvalidGitRepositoryError:
         return False
+
 
 def list_branch():
     for directory in os.listdir("."):
@@ -67,6 +68,7 @@ def list_project_for_branch():
 
 
 def switch_projects_to_branch():
+    project_switch = list()
     wanted_branch = args[2]
     print(Fore.YELLOW + "Switch to branch: " + wanted_branch)
     if wanted_branch:
@@ -90,6 +92,7 @@ def switch_projects_to_branch():
                             print(Fore.CYAN + child_dir + " switch to branch " + str(branch))
                             repo.git.checkout(wanted_branch)
                             checked_out = True
+                            project_switch.append(child_dir)
                             break
                     if not checked_out:
                         print(Fore.MAGENTA + "not a local branch try remote")
@@ -98,19 +101,25 @@ def switch_projects_to_branch():
                             if wanted_branch == branch_name:
                                 print(Fore.CYAN + child_dir + " switch to remote branch " + str(branch))
                                 repo.git.checkout(branch_name)
+                                project_switch.append(child_dir)
                                 checked_out = True
                                 break
                     if not checked_out:
                         print(Fore.LIGHTMAGENTA_EX + "No branch: " + wanted_branch + " for project: " + child_dir)
                 os.chdir("..")
                 print("  ")
+    print(Fore.LIGHTBLUE_EX + "projects switch to: " + wanted_branch)
+    for p in project_switch:
+        print(Fore.LIGHTGREEN_EX + p)
+
 
 def mgit():
     if args[1] == "--help" or args[1] == "-h":
         print("--list-branch or -l : list all local branches for all projects")
         print("--list-remote-branch or -r : list all remote branches for all projects")
         print("--list-project-for-branch or -p : list all projects for a given branch")
-        print("--switch-all or -s : switch all project on a given branch (local first, remote else), no branch creation")
+        print(
+            "--switch-all or -s : switch all project on a given branch (local first, remote else), no branch creation")
 
     elif args[1] == "--list-branch" or args[1] == "-l":
         list_branch()
